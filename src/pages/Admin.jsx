@@ -41,15 +41,15 @@ export default function Admin() {
 
   const handleLogin = (e) => {
     e.preventDefault()
-    if (passwordInput === ADMIN_PASSWORD) {
+    const expected = ADMIN_PASSWORD.trim()
+    const typed = passwordInput.trim()
+    if (typed === expected) {
       setAuthed(true)
       setAuthError('')
     } else {
       // TEMPORARY DEBUG INFO — remove this block once login works.
-      // This does not show the real password, only its length, so you
-      // can check for things like accidental spaces or a blank value.
       setAuthError(
-        `Incorrect password 🌧️ (debug: the site is expecting a password that is ${ADMIN_PASSWORD.length} characters long, and you typed ${passwordInput.length} characters)`
+        `Incorrect password 🌧️ (debug: site expects "${expected}" — you typed "${typed}")`
       )
     }
   }
