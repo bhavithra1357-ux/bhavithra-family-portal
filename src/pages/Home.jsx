@@ -5,7 +5,7 @@ export default function Home() {
     <div>
       <span className="emoji-big">🌷</span>
       <h1 className="hero-title">Bhavithra Family Portal</h1>
-      <p className="hero-sub">Welcome to the family registration system</p>
+      <p className="hero-sub">Welcome to the family building</p>
 
       <div className="card">
         <Link to="/join" className="btn btn-primary">💌 Join Family</Link>
