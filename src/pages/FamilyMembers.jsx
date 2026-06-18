@@ -1,6 +1,14 @@
 import { useEffect, useState } from 'react'
 import { supabase } from '../supabaseClient.js'
 
+// Hides the real "Boyfriend/Girlfriend" connection from public pages,
+// showing a neutral label instead. The real value still exists in the
+// database and is visible in Admin and on the person's own Check Status page.
+function publicConnectionLabel(connection) {
+  if (connection === 'Boyfriend/Girlfriend') return 'Chaos Coordinator'
+  return connection
+}
+
 export default function FamilyMembers() {
   const [members, setMembers] = useState([])
   const [loading, setLoading] = useState(true)
@@ -43,7 +51,7 @@ export default function FamilyMembers() {
               )}
               <div className="member-name">{m.name}</div>
               <div className="member-role">{m.role || '—'}</div>
-              <div className="member-connection">{m.connection || ''}</div>
+              <div className="member-connection">{publicConnectionLabel(m.connection) || ''}</div>
             </div>
           ))}
         </div>
